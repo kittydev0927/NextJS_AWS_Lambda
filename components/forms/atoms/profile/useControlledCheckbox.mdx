@@ -1,0 +1,39 @@
+import { useControlledCheckbox } from '#components/forms/atoms/profile/useControlledCheckbox';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Controlled Checkbox
+
+The `Controlled Checkbox` component is a restricted version of the
+[`Checkbox`][1] component. Its goals are:
+
+1.  Reduce the surface area for customization and testing.
+2.  Provide strong typing and reduce boilerplate for use as a
+    [controlled component][2].
+
+## Usage
+
+The `Controlled Checkbox` is implemented as a hook. It returns the component,
+the current checked status, and a function used to update the current
+checked status.
+
+To use this component, call a new instance of the hook:
+
+```tsx
+const ConsumingComponent = () => {
+  const [MyCheckbox, isChecked, setChecked] = useControlledCheckbox();
+
+  return (
+    <p>
+      <MyCheckbox label="Accept Privacy Policy" />
+    </p>
+  );
+};
+```
+
+In this example, `isChecked` will always reflect the current checked status
+of the control. The `setChecked` function could (optionally) be used to update
+the checked status in response to an external event.
+
+[1]: ?path=/docs/components-forms-atoms-checkbox--checkbox 'Checkbox component'
+[2]: https://reactjs.org/docs/forms.html#controlled-components 'Controlled Components'

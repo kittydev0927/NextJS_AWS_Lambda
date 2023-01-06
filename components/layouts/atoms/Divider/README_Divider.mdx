@@ -1,0 +1,39 @@
+<!-- README_Divider.mdx -->
+
+import { ArgsTable, Source } from '@storybook/addon-docs';
+import { Divider } from './Divider.tsx';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Divider
+
+## Demo
+
+_Navigate to the Canvas tab to explore more variations._
+
+<div
+  style={{
+    width: '100%',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: 'rgba(211,211,211,0.2)',
+  }}
+>
+  <ThemeProvider theme={theme}>
+    <Divider />
+  </ThemeProvider>
+</div>
+
+## Usage
+
+## Import
+
+```
+import { Divider } from 'cpp-ui-lib'
+```
+
+## Variations
+
+<ArgsTable of={Divider} />
+
+<!-- ### MUI Divider Docs - https://mui.com/components/links/ -->

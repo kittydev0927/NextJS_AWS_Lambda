@@ -1,0 +1,34 @@
+version: '3.9'
+
+# This is just like `docker-compose.yml` but tailored for execution by Bitbucket,
+# which imposes limits on Docker's functionality.
+
+networks:
+  cpp-ui-network:
+    name: cpp-ui-network
+
+services:
+  ui:
+    build: ./
+    command: sh -cx "rm -rf '/app/.next/*' ; yarn run next build && yarn run next start -p 3001"
+    networks:
+      - cpp-ui-network
+    ports:
+      - 3001:3001
+    volumes:
+      - ./:/app
+
+  cypress:
+    depends_on:
+      - ui
+    image: public.ecr.aws/o8c0q7c2/cpp-cypress:v1.0.3
+    environment:
+      - CYPRESS_BASE_URL=http://ui:3001
+      - HOST_UID
+      - HOST_GID
+    networks:
+      - cpp-ui-network
+    profiles: [integration]
+    volumes:
+      - ./artifacts/cypress:/app/artifacts/cypress
+      - ./cypress:/app/cypress

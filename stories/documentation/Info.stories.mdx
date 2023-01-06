@@ -1,0 +1,279 @@
+import { Meta } from '@storybook/addon-docs';
+import { linkTo } from '@storybook/addon-links';
+
+<Meta title="Addon Info" />
+
+# Addons
+
+| Category                                                    | Featured Addons                                    |
+| ----------------------------------------------------------- | -------------------------------------------------- |
+| [Documentation Addons](#documentation-addons)               | Storybook Docs                                     |
+| [Prototyping Addons](#prototyping-addons)                   | Links                                              |
+| [Design/UI Addons](#designui-addons)                        | Accessibility, Outline, Backgrounds, Grid, Measure |
+| [Design Documentation Addons](#design-documentation-addons) | Designs                                            |
+| [Code Addons](#code-addons)                                 | Storysource                                        |
+| [Miscellaneous Addons](#miscellaneous-addons)               | Dark Mode                                          |
+
+&nbsp
+&nbsp
+
+## Documentation Addons
+
+### 🔤 Docs
+
+Storybook's Docs addon comes out of the box with Storybook and is pretty
+customizable, especially when using MDX content. You are able to import
+Storybook components straight into your MDX file, allowing you to quickly
+write documentation and include necessary references.
+
+**A few features:**
+
+- Automatically creates a DocsPage that aggregates info from stories, text descriptions, props tables, and code examples
+- Ability to customize documentation
+- Ability to import Storybook components into MDX files
+
+To view the Docs page, navigate to the `Docs` tab (next to the `Canvas` tab in the main toolbar)
+
+#### Official Docs Documentation
+
+https://github.com/storybookjs/storybook/tree/next/addons/docs
+
+&nbsp
+&nbsp
+⬆️ [Back to top](#addons)
+
+## Prototyping Addons
+
+### 🔗 Links
+
+This plugin allows you to link stories together to build more usable prototypes. Want to
+link one page layout to another? Links makes it happen!
+
+In your stories:
+
+```
+<!-- Implementing Links -->
+
+import { linkTo } from '@storybook/addon-links';
+
+<Button onClick={linkTo('Test Pages/Page2')}>
+  Go to "Page 2"
+</Button>
+
+```
+
+**A few features:**
+
+- Link between different Storybook stories
+- Quick and easy implementation
+
+#### Official Links Documentation
+
+https://github.com/storybookjs/storybook/tree/next/addons/links
+
+&nbsp
+&nbsp
+⬆️ [Back to top](#addons)
+
+## Design/UI Addons
+
+### ♿️ Accessibility
+
+The Accessibility addon helps you develop accessible components.
+
+_Note_: If you toggle between dark and light backgrounds, Accessibility does not always automatically refresh and list violations.
+A current workaround is to click on a different addon tab (i.e. Design or Actions) after changing the background and click back into
+Accessibility to view any violations and warnings.
+
+**A few features:**
+
+- Provides suggestions on how to fix violations
+- Notes the specific standard that is being violated
+- Ability to disable/override rules, if needed
+- Visually highlights specific elements are in violation
+
+Available on all components under `Canvas` > `Accessibility` (in the sidebar)
+
+#### Official Accessibility Documentation
+
+https://github.com/storybookjs/storybook/tree/next/addons/a11y
+
+### 🔲 Outline
+
+It's all in the name: Outline _outlines_ CSS elements to help with layout placement and alignment.
+
+**A few features:**
+
+- Visually debug CSS layout and alignment
+- Specifically outlines individual elements
+
+Toggle the Outline tool by clicking on the `Outline` icon with the `Canvas` tab selected.
+
+### 🏞 Backgrounds
+
+Switch backgrounds to view components in different settings.
+
+**A few features:**
+
+- Customize background colors
+- Background colors can be solid or gradients
+- No support for background images
+
+Select the `Backgrounds` icon in the main toolbar to apply a background. Background color options can be modified in `preview.js`:
+
+```
+<!-- ./storybook/preview.js -->
+
+export const parameters = {
+  backgrounds: {
+    values: [
+      {
+        name: 'color name',
+        value: 'rgb(251,244,244)',
+      },
+    ]
+  }
+}
+```
+
+#### Official Backgrounds Documentation
+
+https://storybook.js.org/docs/react/essentials/backgrounds
+
+### ⧉ Grid
+
+Part of the Backgrounds addon, Grid allows you to add a grid background to the preview window.
+
+**A few features:**
+
+- Customize the grid size, along with opacity, cell amount, and offsets
+
+Select the Grid icon in the main panel to toggle the Grid tool.
+
+#### Official Grid Documentation
+
+https://storybook.js.org/docs/react/essentials/backgrounds (scroll to the bottom for Grid docs)
+
+### 📏 Measure
+
+View your components and layouts in the context of the box model.
+
+**A few features:**
+
+- View elements in the context of the box model
+- Quick reference to check CSS values (padding, margin, etc.)
+
+To use the Measure tool, select the Measure icon in the main panel
+
+#### Official Measure Documentation
+
+https://storybook.js.org/addons/@storybook/addon-measure/
+
+&nbsp
+&nbsp
+
+⬆️ [Back to top](#addons)
+
+## Design Documentation Addons
+
+### ⚜️ Designs
+
+Designs allows you to embed design files into your Storybook.
+
+**A few features:**
+
+- Embed design files into Storybook
+- Supports embedding images, links, and websites via iframe
+- Embedding websites has a limit: you can't embed websites with unmatch X-Frame-Options (Sketch websites don't work, but you are still able to add a copy of the link)
+
+With the `Canvas` tab selected, navigate to `Design` in the addons panel to view design assets.
+
+#### Official Designs Documentation
+
+https://pocka.github.io/storybook-addon-designs/?path=/story/docs-quick-start--page
+
+⬆️ [Back to top](#addons)
+
+## Code Addons
+
+### 💾 Storysource
+
+See that component source code! Storysource provides more context in its code snippet compared to the Docs code snippets.
+
+**A few features:**
+
+- Allows users to view the source code for a given component
+- Provides more context in snippets compared to what is provided by Docs
+
+Available for all components with `Canvas` selected > `Story` (in the sidebar)
+
+#### Quick comparison of code snippet - Docs vs Storysource:
+
+```
+<!-- Docs Snippet for Textarea component: -->
+
+<Field>
+  <Field.Label>
+    Textarea
+  </Field.Label>
+  <Field.Textarea placeholder="Custom TextArea" />
+</Field>
+
+<!-- Storysource Snippet for Textarea component: -->
+
+({ ...args }) => {
+  return (
+    <Field>
+      <Field.Label>Textarea</Field.Label>
+      <Field.Textarea placeholder="Custom TextArea" {...args} />
+    </Field>
+  );
+}
+
+```
+
+#### Official Storysource Documentation
+
+https://github.com/storybookjs/storybook/tree/next/addons/storysource
+
+&nbsp
+&nbsp
+⬆️ [Back to top](#addons)
+
+## Miscellaneous Addons
+
+### 🌙 Dark Mode
+
+For days when you want the theme to match your mood.
+
+**A few features:**
+
+- Allows users to customize how they want to view Storybook instead of imposing a single theme
+- Ability to create custom light and dark themes
+- Dark mode doesn't always apply theme as expected in the preview windows
+
+Toggle between dark mode and light mode by clicking on the sun/moon in the main toolbar when `Canvas` is active
+
+#### Official Dark Mode Documentation
+
+https://storybook.js.org/addons/storybook-dark-mode/
+
+⬆️ [Back to top](#addons)
+
+<!-- Template for Addon notes -->
+
+<!-- ### ❓ Addon Name
+
+Description
+
+| ✅ &nbsp **Pros** | 🛑 &nbsp **Cons** |
+| ----------------- | ----------------- |
+|                   |                   |
+|                   |                   |
+
+**Live Example**:
+
+**Addon Docs**:
+
+⬆️ [Back to top](#addons)
+-->

@@ -1,0 +1,60 @@
+<!-- README_Button.mdx -->
+
+import Button from '@mui/material/Button';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Button
+
+## Demo
+
+_Navigate to the Canvas tab to explore more button variations._
+
+<div
+  style={{
+    width: '100%',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: 'rgba(211,211,211,0.2)',
+  }}
+>
+  <ThemeProvider theme={theme}>
+    <Button variant="primary">Build Your Profile</Button>
+  </ThemeProvider>
+</div>
+
+## Usage
+
+This is a MUI Button that can be used for forms (or anywhere else buttons are needed).
+
+## Import
+
+```
+import Button from '@mui/material/Button';
+import { ThemeProvider } from '@mui/material'; <---- allows us to apply a custom theme
+import { theme } from '#styles/styles'; <---- custom theme with Progress branding
+
+```
+
+## Variations
+
+### Size
+
+Adjust the size using the `size` prop. Support is available for 2 sizes:
+
+| size  | button                                                                                                      |
+| ----- | ----------------------------------------------------------------------------------------------------------- |
+| small | <ThemeProvider theme={theme}><Button size='small' variant="primary"> Small Button</Button></ThemeProvider>  |
+| large | <ThemeProvider theme={theme}><Button size='large' variant="primary"> Large Button </Button></ThemeProvider> |
+
+### Variats
+
+Adjust the colors using the `variant` prop. Support is available for 3 variants:
+
+| Variant   | button                                                                                      |
+| --------- | ------------------------------------------------------------------------------------------- |
+| primary   | <ThemeProvider theme={theme}><Button variant="primary">Primary</Button></ThemeProvider>     |
+| secondary | <ThemeProvider theme={theme}><Button variant="secondary">Secondary</Button></ThemeProvider> |
+| inactive  | <ThemeProvider theme={theme}><Button variant="inactive">Inactive</Button></ThemeProvider>   |
+
+### MUI Button Docs - https://mui.com/components/buttons/

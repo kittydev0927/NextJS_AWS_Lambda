@@ -1,0 +1,49 @@
+<!-- README_Checkbox.mdx -->
+
+import { Checkbox } from '#components/forms/atoms/Checkbox/Checkbox';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Checkbox
+
+## Demo
+
+_Navigate to the Canvas tab to explore more checkbox variations._
+
+<div
+  style={{
+    width: '100%',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: 'rgba(211,211,211,0.2)',
+  }}
+>
+  <ThemeProvider theme={theme}>
+    <Checkbox label="Only show move-in ready properties" />
+  </ThemeProvider>
+</div>
+
+## Usage
+
+This component is a MUI Checkbox to be used to build forms where checkboxes are needed for selection.
+
+## Import
+
+```
+import { Checkbox } from '#components/forms/atoms/Checkbox/Checkbox';
+
+```
+
+## Variations
+
+### Size
+
+Adjust the size using the `size` prop. Support is available for 3 sizes:
+
+| size   | checkbox                                                                |
+| ------ | ----------------------------------------------------------------------- |
+| small  | <ThemeProvider theme={theme}><Checkbox size='small' /></ThemeProvider>  |
+| medium | <ThemeProvider theme={theme}><Checkbox size='medium' /></ThemeProvider> |
+| large  | <ThemeProvider theme={theme}><Checkbox size='large' /></ThemeProvider>  |
+
+### MUI Checkbox Docs - https://mui.com/components/checkboxes/

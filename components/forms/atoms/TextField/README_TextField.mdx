@@ -1,0 +1,103 @@
+<!-- README_TextField.mdx -->
+
+import { TextField } from '#components/forms/atoms/TextField/TextField';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
+import { Canvas, Story } from '@storybook/addon-docs';
+
+# Text Field
+
+## Demo
+
+_Navigate to the Canvas tab to explore more text field variations._
+
+<div
+  style={{
+    width: '100%',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: 'rgba(211,211,211,0.2)',
+  }}
+>
+  <ThemeProvider theme={theme}>
+    <TextField
+      placeholder="Search"
+      label="Search"
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+      }}
+    ></TextField>
+  </ThemeProvider>
+</div>
+
+## Usage
+
+This component is a MUI TextField.
+
+## Import
+
+```
+import { TextField } from '#components/forms/atoms/TextField/TextField';
+import { ThemeProvider } from '@mui/material'; <---- allows us to apply a custom theme
+import { theme } from '../../../utils/styles'; <---- custom theme with Progress branding
+
+```
+
+## Variations
+
+### Variant
+
+Adjust the type using the `variant` prop. Support is available for 3 types:
+
+| variant  | TextField                                                                                                |
+| -------- | -------------------------------------------------------------------------------------------------------- |
+| standard | <ThemeProvider theme={theme}><TextField variant='standard' label="Standard"></TextField></ThemeProvider> |
+| outlined | <ThemeProvider theme={theme}><TextField variant='outlined' label="Outlined"></TextField></ThemeProvider> |
+| filled   | <ThemeProvider theme={theme}><TextField variant='filled' label="Filled"></TextField> </ThemeProvider>    |
+
+### Disabled
+
+Set `disabled` prop to `true` or `false`
+
+| disabled | TextField                                                                                                              |
+| -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| true     | <ThemeProvider theme={theme}><TextField variant='standard' disabled={true} label="True"></TextField> </ThemeProvider>  |
+| false    | <ThemeProvider theme={theme}><TextField variant='standard' disabled={false} label="False"></TextField></ThemeProvider> |
+
+### Type
+
+Adjust the type using the `type` prop. Set `type` prop
+
+| type     | TextField                                                                                             |
+| -------- | ----------------------------------------------------------------------------------------------------- |
+| text     | <ThemeProvider theme={theme}><TextField label="text" type='text'></TextField> </ThemeProvider>        |
+| password | <ThemeProvider theme={theme}><TextField label="password" type='password'></TextField></ThemeProvider> |
+
+### Multiline
+
+To use the `TextField` like a `TextArea` HTML element for longer pieces of text, use the `multiline` prop. Specify the size of the `TextField` by using the `rows` prop. If `rows` is not specified, the height of the element will adjust dynamically to the text input.
+
+The example below also utilizes the `fullWidth` prop to take up the full width of the parent element.
+
+<div
+  style={{
+    width: '100%',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: 'rgba(211,211,211,0.2)',
+  }}
+>
+  <ThemeProvider theme={theme}>
+    <TextField label="This is a multiline text field." multiline fullWidth rows={4}></TextField>
+  </ThemeProvider>
+</div>
+
+### MUI TextField Docs - https://mui.com/components/text-fields/
+
+### MUI Input adornments - https://mui.com/components/text-fields/#input-adornments

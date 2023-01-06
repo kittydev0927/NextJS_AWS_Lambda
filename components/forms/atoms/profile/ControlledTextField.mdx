@@ -1,0 +1,29 @@
+import { ControlledTextField } from '#components/forms/atoms/profile/ControlledTextField';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Controlled Text Field
+
+The `Controlled Text Field` component is a restricted version of the
+[`Text Field`][1] component. Its goals are:
+
+1.  Reduce the surface area for customization and testing.
+2.  Provide strong typing for use as a [controlled component][2].
+
+## Demo
+
+<div
+  style={{
+    width: '100%',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: 'rgba(211,211,211,0.2)',
+  }}
+>
+  <ThemeProvider theme={theme}>
+    <ControlledTextField label="First Name" />
+  </ThemeProvider>
+</div>
+
+[1]: ?path=/docs/components-forms-atoms-text-field--text-field 'Text Field component'
+[2]: https://reactjs.org/docs/forms.html#controlled-components 'Controlled Components'

@@ -1,0 +1,19 @@
+version: 1
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install v16.14.0
+        - yarn co:login
+        - yarn install --frozen-lockfile --non-interactive
+
+    build:
+      commands: [yarn run build]
+
+  artifacts:
+    baseDirectory: .next
+    files: ['**/*']
+
+  cache:
+    paths: [node_modules/**/*]

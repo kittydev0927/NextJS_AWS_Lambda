@@ -1,0 +1,44 @@
+extends:
+  - ./node_modules/cpp-infra-util/.eslintrc.ts.yml
+  - next/core-web-vitals
+
+parserOptions:
+  tsconfigRootDir: ./
+  project:
+    - ./tsconfig.json
+
+plugins:
+  - no-inline-styles
+  - simple-import-sort
+
+rules:
+  '@typescript-eslint/naming-convention': off
+  '@typescript-eslint/no-unsafe-call': off
+  '@typescript-eslint/no-unsafe-member-access': off
+  '@typescript-eslint/no-unsafe-return': off
+  '@typescript-eslint/restrict-template-expressions': off
+  '@typescript-eslint/sort-type-union-intersection-members': off
+  'func-names': off
+  'max-lines-per-function': off
+  'no-alert': off
+  'no-inline-styles/no-inline-styles': 2
+  'no-negated-condition': off
+  'no-new': off
+  'no-param-reassign': off
+  'no-promise-executor-return': off
+  'no-unneeded-ternary': off
+  'object-shorthand': off
+  'padding-line-between-statements': off
+  'prefer-arrow-callback': off
+  'prefer-destructuring': off
+  'prefer-named-capture-group': off
+  'react/no-children-prop':
+    - off
+    - allowFunctions: true
+  'require-unicode-regexp': off
+  'simple-import-sort/imports': error
+  'sort-keys': off
+  'no-restricted-imports':
+    ['error', { 'name': '@testing-library/react', 'message': 'Please use #utils/testing-library instead' }]
+  'react/jsx-boolean-value': error
+  '@typescript-eslint/no-unused-vars': error

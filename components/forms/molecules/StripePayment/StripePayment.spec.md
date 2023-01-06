@@ -1,0 +1,1 @@
+This test is disabled because the Stripe Payment Element needs to create a successful payment intent from the backend and retrieve a generated client sectret as a response in order to render the widget.

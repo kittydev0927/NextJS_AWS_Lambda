@@ -1,0 +1,36 @@
+import { usePrivacyPolicyCheckbox } from '#components/forms/atoms/profile/usePrivacyPolicyCheckbox';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Privacy Policy Checkbox
+
+The `Privacy Policy` component is a specialized version of the [`Checkbox`][1]
+component. Its goals are:
+
+1.  Reduce the surface area for customization and testing.
+2.  Encapsulate the logic required to manage the "Privacy Policy" checkbox
+    as a required field.
+3.  Provide a single point of truth for the "Privacy Policy" legal statement.
+
+## Usage
+
+The `Privacy Policy Checkbox` is implemented as a hook. It returns the
+component _and_ the current checked status.
+
+If the user is currently logged in, this component will initialize to a
+checked or unchecked state based on whether the user has already accepted
+the privacy policy or not.
+
+To use this component, call a new instance of the hook:
+
+```tsx
+const ConsumingComponent = () => {
+  const [PrivacyPolicy, isAccepted] = usePrivacyPolicyCheckbox();
+  return <PrivacyPolicy />;
+};
+```
+
+In this example, `isAccepted` will always reflect the current checked status
+of the control.
+
+[1]: ?path=/docs/components-forms-atoms-checkbox--checkbox 'Checkbox component'

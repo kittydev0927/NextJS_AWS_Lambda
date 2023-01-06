@@ -1,0 +1,15 @@
+.next
+.storybook
+.vscode
+artifacts
+auth
+components
+constants
+doc
+homedetail
+node_modules
+services
+stories
+test
+types
+utils

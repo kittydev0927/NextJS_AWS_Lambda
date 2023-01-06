@@ -1,0 +1,122 @@
+image:
+  name: 532629949364.dkr.ecr.us-east-1.amazonaws.com/progressbuild-node:fermium
+  aws:
+    oidc-role: arn:aws:iam::532629949364:role/oidc-ecr
+
+definitions:
+  caches:
+    yarn: /usr/local/share/.cache/yarn/v6
+    sonar: ~/.sonar/cache
+
+  steps:
+    - step: &build-test-lib
+        oidc: true
+        artifacts:
+          - test-reports/**
+        caches:
+          - node
+          - sonar
+          - yarn
+        name: Build and Test Lib
+        script:
+          - . ci/lib/build-test.sh
+        size: 2x
+
+    - step: &build-test-ui
+        oidc: true
+        artifacts:
+          - artifacts/**
+        caches:
+          - node
+          - yarn
+        size: 2x
+        name: Build and Test UI
+        script:
+          - . ci/ui/build-test.sh
+
+    - step: &security-check
+        oidc: true
+        name: Security Check
+        size: 2x
+        script:
+          - pipe: atlassian/git-secrets-scan:0.5.0
+            variables:
+              CUSTOM_PATTERN: '3MVG9.{80}'
+          - pipe: atlassian/git-secrets-scan:0.5.0
+            variables:
+              CUSTOM_PATTERN: '^[0-9]{19}$'
+          - pipe: snyk/snyk-scan:0.4.6
+            variables:
+              SNYK_TOKEN: $SNYK_TOKEN
+              LANGUAGE: 'npm'
+              MONITOR: 'true'
+              DONT_BREAK_BUILD: 'true'
+
+pipelines:
+  pull-requests:
+    '**':
+      - step: *build-test-lib
+      - step: *build-test-ui
+      - step: *security-check
+
+  branches:
+    develop:
+      - step: *build-test-lib
+      - step: *build-test-ui
+      - step:
+          name: Deploy Lib to QA
+          size: 2x
+          oidc: true
+          script:
+            - . ci/lib/dependencies.sh
+            - aws configure set default.region us-west-2
+            - export AWS_ACCESS_KEY_ID=$DEV_AWS_ACCESS_KEY_ID
+            - export AWS_SECRET_ACCESS_KEY=$DEV_AWS_SECRET_ACCESS_KEY
+            - export NEXT_PUBLIC_AEM_URL=$(aws ssm get-parameter --name /dev/aem/url --with-decryption | jq -r '.Parameter.Value')
+            - export STORYBOOK_OKTA_CLIENT_ID=$(aws ssm get-parameter --name /dev/okta/clientId --with-decryption | jq -r '.Parameter.Value')
+            - export STORYBOOK_OKTA_DOMAIN=$(aws ssm get-parameter --name /dev/okta/domain --with-decryption | jq -r '.Parameter.Value')
+            - export STORYBOOK_MAPBOX_TOKEN=$(aws ssm get-parameter --name /dev/mapbox/apiToken --with-decryption | jq -r '.Parameter.Value')
+            - export STORYBOOK_PORTAL_API_URL=$(aws ssm get-parameter --name /dev/portal/apiUrl --with-decryption | jq -r '.Parameter.Value')
+            - export STORYBOOK_PERSONA_TEMPLATE=$(aws ssm get-parameter --name /dev/persona/template --with-decryption | jq -r '.Parameter.Value')
+            - yarn build:storybook
+            - pipe: atlassian/aws-s3-deploy:1.1.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_DEV
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_DEV
+                AWS_DEFAULT_REGION: 'us-east-1'
+                S3_BUCKET: 'cpp-ui-lib-bucket-qa'
+                LOCAL_PATH: 'storybook-static'
+                ACL: 'public-read'
+                DELETE_FLAG: 'true'
+                EXTRA_ARGS: '--quiet'
+      - step:
+          oidc: true
+          name: Publish Package
+          deployment: production
+          size: 2x
+          script:
+            - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            - . ci/lib/dependencies.sh
+            - . ci/lib/deploy.sh
+
+    release/*:
+      - step: *build-test-ui
+      - step:
+          oidc: true
+          name: Tag version
+          script:
+            - declare -x VERSION=$(jq -r '.version' package.json)
+            - TAG="${VERSION}-RC${BITBUCKET_BUILD_NUMBER}"
+            - git tag -a "${TAG}" -m "Tagging for release candidate ${TAG}"
+            - git push origin ${TAG}
+
+    master:
+      - step: *build-test-ui
+      - step:
+          oidc: true
+          name: Tag version
+          script:
+            - declare -x VERSION=$(jq -r '.version' package.json)
+            - git tag -a "${VERSION}" -m "Tagging for version ${VERSION}"
+            - git push origin ${VERSION}

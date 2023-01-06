@@ -1,0 +1,7 @@
+artifacts
+.next
+coverage
+dist
+out
+storybook-static
+test-reports

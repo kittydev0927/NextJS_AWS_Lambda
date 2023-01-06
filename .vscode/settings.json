@@ -1,0 +1,37 @@
+{
+  "[typescript]": {
+    "editor.codeActionsOnSave": { "source.organizeImports": false },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": { "source.organizeImports": false },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": { "source.fixAll.stylelint": true },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "eslint.packageManager": "yarn",
+  "eslint.useESLintClass": true,
+  "files.associations": { ".eslintignore": "ignore" },
+  "less.validate": false,
+  "npm.autoDetect": "off",
+  "npm.packageManager": "yarn",
+  "prettier.arrowParens": "avoid",
+  "prettier.trailingComma": "all",
+  "prettier.useTabs": false,
+  "scss.validate": false,
+  "stylelint.packageManager": "yarn",
+  "stylelint.reportInvalidScopeDisables": true,
+  "stylelint.reportNeedlessDisables": true,
+  "typescript.tsc.autoDetect": "off",
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  }
+}

@@ -1,0 +1,43 @@
+<!-- README_Typography.mdx -->
+
+import { Typography } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Typography
+
+## Demo
+
+_Navigate to the Canvas tab to explore more link variations._
+
+<div
+  style={{
+    width: '100%',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: 'rgba(211,211,211,0.2)',
+  }}
+>
+  <ThemeProvider theme={theme}>
+    <Typography variant="h1">H1 Typography</Typography>
+    <Typography variant="h2">H2 Typography</Typography>
+    <Typography variant="h3">H3 Typography</Typography>
+  </ThemeProvider>
+</div>
+
+## Usage
+
+This is a MUI-based Typography component that can be used or anywhere else text is needed.
+
+## Import
+
+```
+import Typography from '@mui/material/Typography';
+import { ThemeProvider } from '@mui/material'; <---- allows us to apply a custom theme
+import { theme } from '#styles/styles'; <---- custom theme with Progress branding
+
+```
+
+## Variations
+
+### MUI Typography Docs - https://mui.com/components/typography/

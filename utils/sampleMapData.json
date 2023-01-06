@@ -1,0 +1,24 @@
+[
+  {
+    "statuses": ["moveInNow", "specialOffer", "smartHome", "unavailable"],
+    "address": "404 Wisteria Trl, Canton, GA 30114",
+    "label_status": "moveInReady",
+    "baths": 2,
+    "beds": 4,
+    "id": "100022",
+    "location": [34.1871915, -84.5129114],
+    "price": 1700,
+    "property_thumbnail_url": "https://photos.rentprogress.com/WebPhotos/Atlanta/100022/01-Hero-front-view-2725429/01-Hero-front-view-2725429-xs.jpg"
+  },
+  {
+    "statuses": ["moveInNow", "specialOffer", "smartHome", "unavailable"],
+    "address": "1320 Oxford Dr Se, Conyers, GA, 30013",
+    "label_status": "moveInReady",
+    "baths": 4,
+    "beds": 4,
+    "id": "100032",
+    "location": [33.622409, -84.00255],
+    "price": 1650,
+    "property_thumbnail_url": "https://photos.rentprogress.com/WebPhotos/default/000000/01-no-photo/01-no-photo-xs.png"
+  }
+]

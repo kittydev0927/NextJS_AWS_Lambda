@@ -1,0 +1,32 @@
+import { usePrivacyPolicyCheckbox } from '#components/forms/atoms/profile/usePrivacyPolicyCheckbox';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+
+# Progress Resident Radio Checkbox
+
+The `Progress Resident` component provides the logic for the "Are you a current
+Progress resident" question that appears on both the [registration form][1] and
+the [personal settings form][2].
+
+## Usage
+
+The `Progress Resident Radio Checkbox` is implemented as a hook. It returns the
+component _and_ the current resident status.
+
+If the user is currently logged in, this component will initialize its state
+to match the current resident status stored in the current user's profile.
+
+To use this component, call a new instance of the hook:
+
+```tsx
+const ConsumingComponent = () => {
+  const [Resident, isResident] = useProgressResident();
+  return <Resident />;
+};
+```
+
+In this example, `isResident` will always reflect the current checked status
+of the control.
+
+[1]: ?path=/docs/components-forms-organisms-registration-form--registration-form 'Registration Form'
+[2]: ?path=/docs/components-forms-organisms-edit-personal-information-form--edit-personal-information-form 'Personal Settings Form'

@@ -1,0 +1,6 @@
+.next
+artifacts
+coverage
+dist
+node_modules
+storybook-static

@@ -1,0 +1,31 @@
+<!-- README_DatePicker.mdx -->
+
+import { DatePicker } from '#components/forms/atoms/DatePicker/DatePicker';
+import TextField from '@mui/material/TextField';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '#styles/styles';
+import { Canvas, Story } from '@storybook/addon-docs';
+
+# Date Picker
+
+## Demo
+
+_Navigate to the Canvas tab to explore more date picker._
+
+<Story id="components-forms-atoms-date-picker--date-picker" />
+
+## Usage
+
+This component is a MUI DatePicker.
+
+## Import
+
+```
+import { DatePicker } from '#components/forms/atoms/DatePicker/DatePicker';
+import { ThemeProvider } from '@mui/material'; <---- allows us to apply a custom theme
+import { theme } from '#styles/styles'; <---- custom theme with Progress branding
+```
+
+### MUI DatePicker Docs - https://mui.com/components/date-picker/

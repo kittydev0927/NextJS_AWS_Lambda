@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "detail": "Watch: CPP UI",
+      "group": { "isDefault": true, "kind": "build" },
+      "label": "Run development environment",
+      "problemMatcher": [],
+      "script": "dev",
+      "type": "npm"
+    },
+    {
+      "detail": "Test: CPP UI (watch)",
+      "group": { "isDefault": true, "kind": "test" },
+      "label": "Run test watcher",
+      "problemMatcher": [],
+      "script": "test --watch",
+      "type": "npm"
+    }
+  ]
+}
